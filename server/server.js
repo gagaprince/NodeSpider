@@ -25,7 +25,7 @@ app.post('/xflsn',function(req,res){
 
 
 
-var server = app.listen(8080,function(){
+var server = app.listen(8888,function(){
     var host = server.address().address;
     var port = server.address().port;
     console.log("开启服务器：http://%s:%s",host,port);
