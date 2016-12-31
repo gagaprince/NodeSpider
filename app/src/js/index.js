@@ -4,13 +4,19 @@ var page = {
     currentPage:1,
     base:"http://www.xflsn7.com",
     init:function(){
+        this.initCurrentPage();
         this.initPage();
         this.initListener();
+    },
+    initCurrentPage:function(){
+        this.currentPage = localStorage.getItem("xfCurrentPage")||1;
+        this.currentPage = parseInt(this.currentPage);
     },
     initPage:function(){
         var _this = this;
         this.getDataByPage(this.currentPage,function(res){
             _this.render(res);
+            _this.setCurrentPage();
         });
 
     },
@@ -93,6 +99,9 @@ var page = {
         }
         $("#list").html(html);
         $("#pageTitle").html("第"+this.currentPage+"页");
+    },
+    setCurrentPage:function(){
+        localStorage.setItem("xfCurrentPage",this.currentPage);
     }
 }
 
