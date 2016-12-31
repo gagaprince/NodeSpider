@@ -9,7 +9,6 @@ var file = {
 
         var dir = filePath.substring(0,filePath.lastIndexOf('/'));
         this.mkdirSync(dir);
-
         fs.appendFile(filePath, buf, function(err){
             if(err)
                 console.log("fail " + err);
@@ -25,10 +24,11 @@ var file = {
                     pathtmp = path.join(pathtmp, dirname);
                 }
                 else {
-                    pathtmp = dirname;
+                    pathtmp = path.sep+dirname;
                 }
+                console.log(pathtmp);
                 if (!fs.existsSync(pathtmp)) {
-                    if (!fs.mkdirSync(pathtmp)) {
+                    if (!fs.mkdirSync(pathtmp,511)) {
                         return false;
                     }
                 }

@@ -45,3 +45,4 @@ dist_webpack/
 
 #private config
 h5/src/config/config.js
+server/conf/conf.js
